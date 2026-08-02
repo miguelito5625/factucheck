@@ -1,0 +1,99 @@
+<div class="section-header">
+    <h1 class="section-title">Constructor de Reglas</h1>
+    <p class="section-subtitle">Sube un PDF de ejemplo, selecciona el texto que deseas extraer y genera reglas de
+        validación.</p>
+</div>
+
+<div class="surface-card">
+    <form id="builder-form" class="d-flex align-center gap-4 builder-form-mobile">
+        <div class="file-upload-box" style="flex:1; padding: 20px;" id="builder-dropzone">
+            <span class="material-symbols-rounded" style="font-size:32px; margin-bottom:8px;">upload_file</span>
+            <p>PDF de Ejemplo</p>
+            <p class="file-name-display" id="builder-filename" style="margin-top:4px; font-size:0.9rem;"></p>
+            <input type="file" id="builder-file" accept=".pdf" required>
+        </div>
+        <button class="btn btn-secondary builder-submit-btn" type="submit" style="height:auto; padding: 20px 24px;">
+            <span class="material-symbols-rounded">text_snippet</span>
+            Extraer Texto
+        </button>
+    </form>
+</div>
+
+<div id="builder-workspace" style="display:none;">
+    <div class="surface-card">
+        <div class="form-group">
+            <label class="input-label">Nombre de la nueva regla/formato</label>
+            <input type="text" id="new-provider-name" class="text-field" placeholder="Ej. Factura Google Cloud"
+                required>
+        </div>
+    </div>
+
+    <div class="builder-grid">
+        <!-- PDF Viewer -->
+        <div class="surface-card" style="margin-bottom:0; display:flex; flex-direction:column;">
+            <h3 class="mb-4">Texto del Documento</h3>
+            <p class="section-subtitle mb-4" style="font-size:0.9rem;">Subraya el valor que deseas mapear a un campo.
+            </p>
+            <div class="pdf-viewer-container mt-4" style="flex:1;">
+                <pre id="extracted-text" class="pdf-text"></pre>
+            </div>
+        </div>
+
+        <!-- Rule Generator -->
+        <div class="surface-card" style="margin-bottom:0; background: var(--md-sys-color-secondary-container);">
+            <h3>Configurar Regla</h3>
+
+            <div id="builder-suggestions-container"
+                style="display:none; margin-top: 16px; padding: 12px; background: rgba(255,255,255,0.5); border-radius: 8px; border: 1px dashed rgba(0,0,0,0.1);">
+                <div class="d-flex align-center gap-2" style="margin-bottom: 8px;">
+                    <span class="material-symbols-rounded"
+                        style="color: var(--md-sys-color-primary); font-size: 20px;">psychology_alt</span>
+                    <h4 style="margin: 0; font-size: 0.95rem;">Sugerencias Inteligentes</h4>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 12px;">Haz
+                    clic en una sugerencia para añadir la regla automáticamente basada en los campos detectados.</p>
+                <div id="builder-suggestions-list" class="d-flex" style="flex-wrap: wrap; gap: 8px;">
+                    <!-- Sugerencias dinámicas -->
+                </div>
+            </div>
+
+            <div class="form-group mt-8">
+                <label class="input-label">Texto Seleccionado</label>
+                <input type="text" id="selected-text" class="text-field" style="background:rgba(255,255,255,0.7);"
+                    readonly placeholder="Subraya el texto a la izquierda">
+            </div>
+
+            <div class="form-group">
+                <label class="input-label">Asignar a Campo</label>
+                <input type="text" id="field-type" class="text-field" placeholder="Ej. Total, Emisor, RFC"
+                    autocomplete="off">
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                <input type="checkbox" id="is-identifier-rule" style="position:static; opacity:1; pointer-events:auto; width: 18px; height: 18px;">
+                <label for="is-identifier-rule" style="font-size: 0.9rem; color: var(--md-sys-color-on-surface-variant); cursor: pointer;">Usar como identificador de regla (Autocompletado masivo)</label>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                <input type="checkbox" id="is-exchange-rate-rule" style="position:static; opacity:1; pointer-events:auto; width: 18px; height: 18px;">
+                <label for="is-exchange-rate-rule" style="font-size: 0.9rem; color: var(--md-sys-color-on-surface-variant); cursor: pointer;">Validar contra Tipo de Cambio Banguat</label>
+            </div>
+
+            <button class="btn btn-primary" id="add-rule-btn" style="width:100%;">
+                <span class="material-symbols-rounded">add</span>
+                Agregar Regla
+            </button>
+
+            <div class="mt-8">
+                <h4>Reglas Creadas</h4>
+                <ul id="rules-list" class="rules-list"></ul>
+            </div>
+
+            <button class="btn btn-primary mt-8" id="save-provider-btn"
+                style="width:100%; background: var(--md-sys-color-success); color: white;">
+                <span class="material-symbols-rounded">save</span>
+                Guardar Regla
+            </button>
+        </div>
+    </div>
+</div>

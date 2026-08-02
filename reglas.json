@@ -1,0 +1,43 @@
+[
+  {
+    "id": "1784147830202",
+    "name": "test1",
+    "rules": [
+      {
+        "field": "Factura",
+        "regex": "Factura\\s*:\\s*(ELCE\\-0000913)",
+        "isIdentifier": true,
+        "sample": "ELCE-0000913"
+      },
+      {
+        "field": "Folio Fiscal",
+        "regex": "Folio\\s+Fiscal\\s*:\\s*(ECF48707\\-7C06\\-4408\\-AA09\\-D8E8C6BFF720)",
+        "sample": "ECF48707-7C06-4408-AA09-D8E8C6BFF720"
+      },
+      {
+        "field": "Tipo de cambio",
+        "regex": "(1\\.47)",
+        "isExchangeRate": true,
+        "sample": "7.62484"
+      }
+    ]
+  },
+  {
+    "id": "1784148582663",
+    "name": "test2",
+    "rules": [
+      {
+        "field": "NIF/CIF",
+        "regex": "NIF\\/CIF\\s*:\\s*(77777777B)",
+        "isIdentifier": true,
+        "sample": "77777777B"
+      },
+      {
+        "field": "Tipo de cambio",
+        "regex": "(00900)",
+        "isExchangeRate": true,
+        "sample": "7.62484"
+      }
+    ]
+  }
+]

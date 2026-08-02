@@ -1,0 +1,50 @@
+<div class="section-header">
+    <h1 class="section-title">Validación de Facturas</h1>
+    <p class="section-subtitle">Sube uno o múltiples PDFs, el sistema asignará las reglas automáticamente y validará los
+        documentos.</p>
+</div>
+
+<div class="surface-card">
+    <div class="file-upload-box" id="mass-dropzone" style="margin-bottom: 24px;">
+        <span class="material-symbols-rounded" style="font-size:32px; margin-bottom:8px;">upload_file</span>
+        <h3>Haz clic o arrastra múltiples facturas aquí</h3>
+        <p class="file-name-display" id="mass-filename">Ningún archivo seleccionado</p>
+        <input type="file" id="mass-file" accept=".pdf" multiple required>
+    </div>
+
+    <div id="mass-file-list-container" style="display: none;">
+        <h3 style="margin-bottom: 16px;">Archivos a validar (<span id="mass-file-count">0</span>)</h3>
+
+        <div class="mass-files-table-container">
+            <table class="mass-files-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                        <th style="padding: 12px; font-weight: 500;">Archivo</th>
+                        <th style="padding: 12px; font-weight: 500;">Regla Asignada</th>
+                        <th style="padding: 12px; font-weight: 500;">Estado</th>
+                        <th style="padding: 12px; font-weight: 500;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="mass-files-tbody">
+                    <!-- Files injected dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <button class="btn btn-primary" id="mass-start-btn" disabled>
+                <span class="material-symbols-rounded">play_circle</span>
+                Iniciar Validación
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="mass-results-container" style="display: none; margin-top: 32px;">
+    <div class="section-header">
+        <h2 class="section-title">Resultados de Validación</h2>
+    </div>
+    <div id="mass-results-accordion" style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Accordion items injected dynamically -->
+    </div>
+</div>
